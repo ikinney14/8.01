@@ -1,0 +1,1010 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if !IE]><!--><html lang="en"><!--<![endif]-->
+<head dir="ltr">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XA4GVl5ACwcBUVdaAA=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(12),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,(new Date).getTime(),!0])}catch(s){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(13),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(5),t(4),"addEventListener"in window&&t(3),s.xhrWrappable&&t(6),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(14)(a),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=s(n,"nr@wrapped",function(){return c(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&c.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],4:[function(t,e,n){var r=t("ee").get("raf"),o=t(14)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],5:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(14)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],6:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",c)}function i(t){y.push(t),h&&(w=-w,x.data=w)}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t(14)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,g),g.prototype=p.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var w=1,x=document.createTextNode(w);new h(a).observe(x,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],7:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(8),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(11),h=t(10),m=window.XMLHttpRequest;a.features.xhr=!0,t(6),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],8:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],9:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(12),c=t(13),s=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],10:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],11:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],12:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],13:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],14:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(13),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],c])}f(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],c),l}finally{f(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<n.length;s++)c=n[s],a=t[c],r(a)||(t[c]=e(a,f?c+o:o,i,c))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),c=a.length,s=0;s<c;s++)a[s].apply(i,r);var u=f[v[n]];return u&&u.push([y,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){s(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},y={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return y}function i(){return new r}var a="nr@context",c=t("gos"),s=t(12),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!w++){var t=g.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(v,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;g.proto=n?"https://":"http://",c("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=g.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){c("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var c=t("handle"),s=t(12),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(9);var m=""+location,v={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},y=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:a(),origin:m,features:{},xhrWrappable:y};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),c("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader",2,7]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"1beac94c95","agent":"","transactionName":"NQQGYUZWDUNSVUMPWQxOIkBaVBdZXFgYBVkXExdQQ1YRVR1AXgNBEU8NW1BSGwpwWUIURQcWBUdRfg1UVk4ZAVMW","atts":"GUMRFw5MQUNWRxkEWg0CD2pXWBZeR0UZEFMQFQ1WVVtBCgIaFRVTE08GWVtUCG9QWUIIQhFPF1BFQgZeR19WChRYUEgXR1ISHlBDRRRTDBVKW0FaPFlHU1oVFFhTSBdHUhIeWkVoEl8PBDtZXVoKRFZSFVxQAw0XUBgVEFVCGFQTRBAECkEaVQ9fUF1oBVkXDxBGGl8XXV8UDVcaQA4WUhYNQX16Yk9EGkASAUQaRwxDWkJeCVhAW1UZFkQGQR1YQgtpCxUBWEcVWQMfFFQJQxASAWpdU0EKEVVYE0QRBElDBQ0ueWdOHF4YUlAQUEdDSAIDBwE5UAMNCBcYFRBVQhhZE1s9FApcQERBCgIaFRVTE08AXEdHD1FKaVkHWwdDXhdnTg9cUlRCFRROQxdQRRkARUFEUghCTAUNRkRbAklsWFYLU0BbRhcYFRBVQhhUE0QQBApBGlUPX1BdaA9SQFtGV1hYAFseQAZceys1HB4MGVMBR1NEEh1QUVUDa1ECXF8dQx9GByESUEZDClNSWhwEWg0CD3VCUhFEHkVOCloDAxFGFhtBQ1ZHGQRaDQIPal1TQQoRVFsJVQlMEgQOeipkSx0PSAZTFQFGQBxRAAIAaABXDg1PQU1HBnBAU0YTUwwVDVRYHAFcXFVcJkUHEElGTVsPUVFDREQaQBIBRBpUFkJBU1kSGAANC1ZfaABfRlhDFRgUBBZBXVQCXBEMBkoUEQQVG1ZbDFNYaVQJQwwVFxtcQw5cEQwGG0s=","applicationID":"3415687","errorBeacon":"bam.nr-data.net","applicationTime":402}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <title>
+
+ Syllabus | 8.01 Courseware | Edge
+</title>
+
+      <script type="text/javascript">
+        /* immediately break out of an iframe if coming from the marketing website */
+        (function(window) {
+          if (window.location !== window.top.location) {
+            window.top.location = window.location;
+          }
+        })(this);
+      </script>
+
+  
+
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/i18n/en/djangojs.b28203373cc1.js"></script>
+
+  <link rel="icon" type="image/x-icon" href="https://d3vz9i37d3bazy.cloudfront.net/static/images/favicon.c074c912999f.ico" />
+
+  
+  
+
+    <link href="https://d3vz9i37d3bazy.cloudfront.net/static/css/lms-style-vendor.810246d53832.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+  
+
+    <link href="https://d3vz9i37d3bazy.cloudfront.net/static/css/lms-main-v1.8bd4334af4ba.css" rel="stylesheet" type="text/css" />
+
+
+
+
+      
+    <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/lms-main_vendor.799f9907cae4.js" charset="utf-8"></script>
+
+
+      
+    <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/lms-application.0892c3c69058.js" charset="utf-8"></script>
+
+
+
+  <script>
+    window.baseUrl = "https://d3vz9i37d3bazy.cloudfront.net/static/";
+    (function (require) {
+      require.config({
+          baseUrl: window.baseUrl
+      });
+    }).call(this, require || RequireJS.require);
+  </script>
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/lms/js/require-config.73812e088cc5.js"></script>
+  
+    <script type="text/javascript">
+        (function (require) {
+          require.config({
+              paths: {
+                'js/courseware/courseware_factory': 'js/courseware/courseware_factory.79c507070080',
+'draggabilly': 'js/vendor/draggabilly.26caba6f7187',
+'js/courseware/toggle_element_visibility': 'js/courseware/toggle_element_visibility.e564e0ed228c',
+'js/courseware/course_home_events': 'js/courseware/course_home_events.4e8915731e7d',
+'js/courseware/link_clicked_events': 'js/courseware/link_clicked_events',
+'moment': 'js/vendor/moment.min.fd3f9e552fe7',
+'js/student_profile/views/learner_profile_factory': 'js/student_profile/views/learner_profile_factory.c2807af15fde',
+'jquery.url': 'js/vendor/url.min.0098a9ff3d53',
+'js/student_account/logistration_factory': 'js/student_account/logistration_factory.f3eba77aab43',
+'js/groups/views/cohorts_dashboard_factory': 'js/groups/views/cohorts_dashboard_factory.65bc243bc330',
+'js/courseware/accordion_events': 'js/courseware/accordion_events.1bf82c871285',
+'js/bookmarks/views/bookmark_button': 'js/bookmarks/views/bookmark_button.f9d16d58a9d8',
+'js/views/message_banner': 'js/views/message_banner.13d853dc7834'
+            }
+          });
+        }).call(this, require || RequireJS.require);
+    </script>
+  
+
+    
+    <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/lms-modules.49555b2dc7e9.js" charset="utf-8"></script>
+
+
+
+  
+
+  
+
+    <link href="https://d3vz9i37d3bazy.cloudfront.net/static/css/lms-style-course-vendor.d65f103108eb.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+
+    <link href="https://d3vz9i37d3bazy.cloudfront.net/static/css/lms-course.5ce4cb3346ff.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+<script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/jquery.autocomplete.3bd10d7510d2.js"></script>
+<script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/src/tooltip_manager.472e2d2e9b07.js"></script>
+
+
+    <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/discussion_vendor.639df35e4b19.js" charset="utf-8"></script>
+
+
+
+<link href="https://d3vz9i37d3bazy.cloudfront.net/static/css/vendor/jquery.autocomplete.09a0b34739a2.css" rel="stylesheet" type="text/css">
+
+  
+
+
+  
+
+  
+
+
+  
+
+
+<!-- begin Segment -->
+<script type="text/javascript">
+  // Asynchronously load Segment's analytics.js library
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+  analytics.load("lq45jm7522");
+  analytics.page();
+  }}();
+  // Note: user tracking moved to segment-io-footer.html
+</script>
+<!-- end Segment -->
+
+
+  <meta name="path_prefix" content="">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY" />
+
+
+
+</head>
+
+<body class="ltr view-in-course view-courseware courseware  lang_en">
+
+
+<div id="page-prompt"></div>
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#main">Skip to main content</a>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  <header id="global-navigation" class="header-global slim" >
+    <nav class="wrapper-header" aria-label="Global">
+    <h1 class="logo">
+      <a href="/">
+        
+            <img src="https://d3vz9i37d3bazy.cloudfront.net/static/edge/static/images/logo.b3ab883d42c4.png" alt="Edge Home Page"/>
+        
+      </a>
+    </h1>
+
+      <h2 class="course-header"><span class="provider">MIT:</span>
+        <span class="course-number">8.01</span>
+        
+        <span class="course-name">Classical Mechanics</span></h2>
+
+        <ol class="left nav-global list-inline authenticated">
+        
+        
+      </ol>
+
+      
+
+
+
+
+    <ol class="user">
+        <li class="primary">
+            <a href="/dashboard" class="user-link">
+                <span class="sr">Dashboard for:</span>
+                
+                <img class="user-image-frame" src="https://d3vz9i37d3bazy.cloudfront.net/static/images/profiles/default_50.3455a6581573.png" alt="Profile image for ikinney14">
+                <div class="label-username">ikinney14</div>
+            </a>
+        </li>
+        <li class="primary">
+            <button class="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr">More options dropdown</span><span class="fa fa-sort-desc" aria-hidden="true"></span></button>
+            <ul class="dropdown-menu" aria-label="More Options" role="menu">
+                
+                <li class="dropdown-item item has-block-link"><a href="/dashboard" class="action">Dashboard</a></li>
+                <li class="dropdown-item item has-block-link"><a href="/u/ikinney14" class="action">Profile</a></li>
+                <li class="dropdown-item item has-block-link"><a href="/account/settings" class="action">Account</a></li>
+            
+                <li class="item"><a href="/logout" role="menuitem">Sign Out</a></li>
+            </ul>
+        </li>
+    </ol>
+
+
+    </nav>
+</header>
+<!--[if lte IE 9]>
+<div class="ie-banner" aria-hidden="true"><strong>Warning:</strong> Your browser is not fully supported. We strongly recommend using <a href="https://www.google.com/chrome" target="_blank">Chrome</a> or <a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>.</div>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+    <div class="content-wrapper" id="content">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/template" id="image-modal-tpl">
+    <div class="wrapper-modal wrapper-modal-image">
+  <section class="image-link">
+    <%= smallHTML%>
+    <a href="#" class="modal-ui-icon action-fullscreen" role="button">
+      <span class="label">
+        <span class="icon fa fa-arrows-alt fa-large" aria-hidden="true"></span> <%- gettext("Fullscreen") %>
+      </span>
+    </a>
+  </section>
+
+  <section class="image-modal">
+    <section class="image-content">
+      <div class="image-wrapper">
+        <img alt="<%= largeALT %>, <%- gettext('Large') %>" src="<%= largeSRC %>" />
+      </div>
+
+      <a href="#" class="modal-ui-icon action-close" role="button">
+        <span class="label">
+          <span class="icon fa fa-remove fa-large" aria-hidden="true"></span> <%- gettext("Close") %>
+        </span>
+      </a>
+
+      <ul class="image-controls">
+        <li class="image-control">
+          <a href="#" class="modal-ui-icon action-zoom-in" role="button">
+            <span class="label">
+              <span class="icon fa fa fa-search-plus fa-large" aria-hidden="true"></span> <%- gettext("Zoom In") %>
+            </span>
+          </a>
+        </li>
+
+        <li class="image-control">
+          <a href="#" class="modal-ui-icon action-zoom-out is-disabled" aria-disabled="true" role="button">
+            <span class="label">
+              <span class="icon fa fa fa-search-minus fa-large" aria-hidden="true"></span> <%- gettext("Zoom Out") %>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </section>
+</div>
+
+</script>
+
+
+
+
+
+
+
+
+
+<div class="message-banner" aria-live="polite"></div>
+
+  
+
+
+
+
+
+
+    <nav class="courseware wrapper-course-material" aria-label="Course Material">
+        <div class="course-material">
+            
+            <ol class="tabs course-tabs">
+                
+
+
+
+
+
+  
+  <li class="tab">
+  <a href="/courses/course-v1:MITx+8.01test+2016_fall/info" class="">
+  Home
+  </a>
+  </li>
+  
+  <li class="tab">
+  <a href="/courses/course-v1:MITx+8.01test+2016_fall/courseware" class="active">
+  Course
+      <span class="sr">, current location</span>
+  </a>
+  </li>
+  
+  <li class="tab">
+  <a href="/courses/course-v1:MITx+8.01test+2016_fall/pdfbook/0/" class="">
+  Textbook
+  </a>
+  </li>
+  
+  <li class="tab">
+  <a href="/courses/course-v1:MITx+8.01test+2016_fall/calendar/" class="">
+  Office Hours
+  </a>
+  </li>
+  
+  <li class="tab">
+  <a href="https://piazza.com/mit/fall2015/801/home" class="">
+  Piazza
+  </a>
+  </li>
+  
+  <li class="tab">
+  <a href="/courses/course-v1:MITx+8.01test+2016_fall/progress" class="">
+  MITx Grades
+  </a>
+  </li>
+
+                
+            </ol>
+        </div>
+    </nav>
+
+
+
+<div class="container">
+  <div class="course-wrapper" role="presentation">
+
+    <div class="course-index">
+
+      <div class="wrapper-course-modes">
+
+          <div class="courseware-bookmarks-button" data-bookmarks-api-url="/api/bookmarks/v1/bookmarks/">
+              <button type="button" class="bookmarks-list-button is-inactive" aria-pressed="false">
+                  Bookmarks
+              </button>
+          </div>
+
+
+      </div>
+
+      <div class="accordion">
+        <nav class="course-navigation" aria-label="Course">
+            
+
+
+
+
+
+    
+
+<a href="#course-information-child" role="button" class="button-chapter chapter active" id="course-information-parent" aria-controls="course-information-child" aria-expanded="false">
+    <span class="group-heading active" aria-label="Course Information current chapter">
+        <span class="icon fa fa-caret-right" aria-hidden="true"></span>
+        Course Information
+    </span>
+</a>
+<div class="chapter-content-container" id="course-information-child" tabindex="-1" role="group" aria-label="Course Information submenu">
+    <div class="chapter-menu">
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-about/">
+                <p class="accordion-display-name">Course Information </p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item active ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-syllabus/">
+                <p class="accordion-display-name">Syllabus <span class="sr">current section</span></p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-grades/">
+                <p class="accordion-display-name">Grades &amp; Exams </p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-navigation/">
+                <p class="accordion-display-name">Navigation </p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-clickers/">
+                <p class="accordion-display-name">Clicker Registration and Info </p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-resources/">
+                <p class="accordion-display-name">Textbook </p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-ps0/">
+                <p class="accordion-display-name">Answering Online Questions </p>
+                
+
+
+            </a>
+        </div>
+        <div class="menu-item  ">
+            <a class="accordion-nav" href="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-faq/">
+                <p class="accordion-display-name">FAQ </p>
+                
+
+
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+    
+  
+  <script type="text/javascript">
+    (function (require) {
+        require(['https://d3vz9i37d3bazy.cloudfront.net/static/js/courseware/accordion_events.1bf82c871285.js?raw'], function () {
+          require(['js/courseware/accordion_events'], function (AccordionEvents) {
+            
+        AccordionEvents();
+    
+          });
+        });
+    }).call(this, require || RequireJS.require);
+  </script>
+
+
+        </nav>
+      </div>
+
+    </div>
+    <section class="course-content" id="course-content">
+        <main id="main" aria-label="Content" tabindex="-1">
+
+          <div class="xblock xblock-student_view xblock-student_view-sequential xmodule_display xmodule_SequenceModule" data-runtime-class="LmsRuntime" data-init="XBlockToXModuleShim" data-block-type="sequential" data-request-token="1bb4bf3654df11e6b54d12daf56eeb95" data-runtime-version="1" data-usage-id="block-v1:MITx+8.01test+2016_fall+type@sequential+block@seq-syllabus" data-type="Sequence" data-course-id="course-v1:MITx+8.01test+2016_fall">
+  <script type="json/xblock-args" class="xblock-json-init-args">
+    {"xmodule-type": "Sequence"}
+  </script>
+  
+
+
+<div id="sequence_seq-syllabus" class="sequence" data-id="block-v1:MITx+8.01test+2016_fall+type@sequential+block@seq-syllabus" data-position="1" data-ajax-url="/courses/course-v1:MITx+8.01test+2016_fall/xblock/block-v1:MITx+8.01test+2016_fall+type@sequential+block@seq-syllabus/handler/xmodule_handler" data-next-url="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-grades/?child=first" data-prev-url="/courses/course-v1:MITx+8.01test+2016_fall/courseware/Intro/seq-about/?child=last">
+  <div class="path"></div>
+  <div class="sequence-nav">
+    <button class="sequence-nav-button button-previous">
+        <span class="icon fa fa-chevron-prev" aria-hidden="true"></span><span class="sr">Previous</span>
+    </button>
+    <nav class="sequence-list-wrapper" aria-label="Unit">
+      <ol id="sequence-list">
+        <li>
+        <button class="seq_other inactive progress-0 nav-item"
+           data-id="block-v1:MITx+8.01test+2016_fall+type@vertical+block@vert-syllabus"
+           data-element="1"
+           data-page-title="vert-syllabus"
+           data-path="Course Information &gt; Syllabus &gt; vert-syllabus"
+           id="tab_0">
+            <span class="icon fa seq_other" aria-hidden="true"></span>
+            <span class="fa fa-fw fa-bookmark bookmark-icon is-hidden" aria-hidden="true"></span>
+            <div class="sequence-tooltip sr"><span class="sr">other&nbsp;</span>vert-syllabus<span class="sr bookmark-icon-sr">&nbsp;</span></div>
+          </button>
+        </li>
+      </ol>
+    </nav>
+    <button class="sequence-nav-button button-next">
+        <span class="icon fa fa-chevron-next" aria-hidden="true"></span><span class="sr">Next</span>
+    </button>
+  </div>
+
+  <div class="sr-is-focusable" tabindex="-1"></div>
+
+  <div id="seq_contents_0"
+    aria-labelledby="tab_0"
+    aria-hidden="true"
+    class="seq_contents tex2jax_ignore asciimath2jax_ignore">
+    &lt;div class=&#34;xblock xblock-student_view xblock-student_view-vertical&#34; data-runtime-class=&#34;LmsRuntime&#34; data-init=&#34;VerticalStudentView&#34; data-course-id=&#34;course-v1:MITx+8.01test+2016_fall&#34; data-request-token=&#34;1bb4bf3654df11e6b54d12daf56eeb95&#34; data-runtime-version=&#34;1&#34; data-usage-id=&#34;block-v1:MITx+8.01test+2016_fall+type@vertical+block@vert-syllabus&#34; data-block-type=&#34;vertical&#34;&gt;
+  
+
+    
+
+
+&lt;div class=&#34;bookmark-button-wrapper&#34;&gt;
+  &lt;button class=&#34;btn bookmark-button &#34;
+    aria-pressed=&#34;false&#34;
+    data-bookmark-id=&#34;ikinney14,block-v1:MITx+8.01test+2016_fall+type@vertical+block@vert-syllabus&#34;&gt;
+     &lt;span class=&#34;sr bookmark-sr&#34;&gt;Click to add&lt;/span&gt;&amp;nbsp;
+     Bookmark
+    &lt;/button&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;vert-mod&#34;&gt;
+  &lt;div class=&#34;vert vert-0&#34; data-id=&#34;block-v1:MITx+8.01test+2016_fall+type@html+block@about:Syllabus&#34;&gt;
+    &lt;div class=&#34;xblock xblock-student_view xblock-student_view-html xmodule_display xmodule_HtmlModule&#34; data-runtime-class=&#34;LmsRuntime&#34; data-init=&#34;XBlockToXModuleShim&#34; data-block-type=&#34;html&#34; data-request-token=&#34;1bb4bf3654df11e6b54d12daf56eeb95&#34; data-runtime-version=&#34;1&#34; data-usage-id=&#34;block-v1:MITx+8.01test+2016_fall+type@html+block@about:Syllabus&#34; data-type=&#34;HTMLModule&#34; data-course-id=&#34;course-v1:MITx+8.01test+2016_fall&#34;&gt;
+  &lt;script type=&#34;json/xblock-args&#34; class=&#34;xblock-json-init-args&#34;&gt;
+    {&#34;xmodule-type&#34;: &#34;HTMLModule&#34;}
+  &lt;/script&gt;
+  &lt;h2&gt;Syllabus&lt;/h2&gt;&lt;p&gt;The syllabus lists the topics and readings for all classes, as well as other important dates in the semester.&lt;/p&gt;&lt;SCRIPT src=&#34;/assets/courseware/v1/19f1b894018975f959f40014a1beb972/asset-v1:MITx+8.01test+2016_fall+type@asset+block/syllabus.js&#34;&gt;
+&lt;/SCRIPT&gt;&lt;div id=&#34;syllabus&#34;&gt;
+&lt;/div&gt;&lt;SCRIPT&gt;
+printsyllabusweeks(1,-1,&#34;/courses/course-v1:MITx+8.01test+2016_fall/&#34;,&#34;/assets/courseware/v1/33eb9920f08d52e13dceda4579989086/asset-v1:MITx+8.01test+2016_fall+type@asset+block/syllabus.txt&#34;);
+&lt;/SCRIPT&gt;
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+  </div>
+  <div id="seq_content"></div>
+
+  <nav class="sequence-bottom" aria-label="Section">
+    <button class="sequence-nav-button button-previous">
+        <span class="icon fa fa-chevron-prev" aria-hidden="true"></span><span class="sr">Previous</span>
+    </button>
+    <button class="sequence-nav-button button-next">
+        <span class="icon fa fa-chevron-next" aria-hidden="true"></span><span class="sr">Next</span>
+    </button>
+  </nav>
+</div>
+
+<script type="text/javascript">
+  var sequenceNav;
+  $(document).ready(function() {
+    sequenceNav = new SequenceNav($('.sequence-nav'));
+  });
+</script>
+
+</div>
+
+        </main>
+    </section>
+
+    <section class="courseware-results-wrapper">
+      <div id="loading-message" aria-live="polite" aria-relevant="all"></div>
+      <div id="error-message" aria-live="polite"></div>
+      <div class="courseware-results search-results" data-course-id="course-v1:MITx+8.01test+2016_fall" data-lang-code="en"></div>
+    </section>
+
+  </div>
+</div>
+<div class="container-footer">
+    <div class="course-license">
+      
+
+
+    © <span class="license-text">All Rights Reserved</span>
+
+    </div>
+</div>
+
+<nav class="nav-utilities has-utility-calculator" aria-label="Course Utilities">
+
+    
+
+
+
+<div class="calc-main">
+    <button title="Open Calculator" aria-controls="calculator_wrapper" aria-expanded="false" class="calc utility-control-button">
+        <span class="icon fa fa-calculator" aria-hidden="true"></span>
+    </button>
+    
+    <div id="calculator_wrapper">
+        <form id="calculator">
+            <div class="input-wrapper">
+                <label for="calculator_input" class="label-calc-input sr">Enter equation</label>
+                <input type="text" id="calculator_input" title="Calculator Input Field" />
+                
+                <div class="help-wrapper">
+                    <button type="button" title="Hints" id="calculator_hint" aria-haspopup="true" aria-expanded="false" aria-controls="calculator_input_help"></button>
+                    <ul id="calculator_input_help" class="help" aria-hidden="true">
+                        <li class="hint-item" id="hint-moreinfo">
+                            <p class="sr">Use the arrow keys to navigate the tips or use the tab key to return to the calculator</p>
+                            <p>
+                                <span class="bold">
+                                    For detailed information, see <a href="http://edx.readthedocs.io/projects/edx-guide-for-students/en/latest/completing_assignments/SFD_mathformatting.html#math-formatting">Entering Mathematical and Scientific Expressions</a> in the <a href="http://edx-guide-for-students.readthedocs.io/en/latest/index.html">edX Guide for Students</a>.
+                                </span>
+                            </p>
+                        </li>
+                        <li class="hint-item" id="hint-tips"><p><span class="bold">Tips:</span> </p>
+                            <ul>
+                                <li class="hint-item" id="hint-paren"><p>Use parentheses () to make expressions clear. You can use parentheses inside other parentheses.</p></li>
+                                <li class="hint-item" id="hint-spaces"><p>Do not use spaces in expressions.</p></li>
+                                <li class="hint-item" id="hint-howto-constants"><p>For constants, indicate multiplication explicitly (example: 5*c).</p></li>
+                                <li class="hint-item" id="hint-howto-maffixes"><p>For affixes, type the number and affix without a space (example: 5c).</p></li>
+                                <li class="hint-item" id="hint-howto-functions"><p>For functions, type the name of the function, then the expression in parentheses.</p></li>
+                            </ul>
+                        </li>
+                            <li class="hint-item" id="hint-list">
+                                <table class="calculator-input-help-table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col">To Use</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Examples</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Numbers</th>
+                                            <td>
+                                                Integers<br />
+                                                Fractions<br />
+                                                Decimals
+                                            </td>
+                                            <td dir="auto">
+                                                2520<br />
+                                                2/3<br />
+                                                3.14, .98
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Operators</th>
+                                            <td dir="auto">
+                                                + - * / (add, subtract, multiply, divide)<br />
+                                                ^ (raise to a power)<br />
+                                                || (parallel resistors)
+                                            </td>
+                                            <td dir="auto">
+                                                x+(2*y)/x-1
+                                                x^(n+1)<br />
+                                                v_IN+v_OUT<br />
+                                                1||2
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Constants</th>
+                                            <td dir="auto">c, e, g, i, j, k, pi, q, T</td>
+                                            <td dir="auto">
+                                                20*c<br />
+                                                418*T
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Affixes</th>
+                                            <td dir="auto">Percent sign (%) and metric affixes (d, c, m, u, n, p, k, M, G, T)</td>
+                                            <td dir="auto">
+                                                20%<br />
+                                                20c<br />
+                                                418T
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Basic functions</th>
+                                            <td dir="auto">abs, exp, fact or factorial, ln, log2, log10, sqrt</td>
+                                            <td dir="auto">
+                                                abs(x+y)<br />
+                                                sqrt(x^2-y)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Trigonometric functions</th>
+                                            <td dir="auto">
+                                                sin, cos, tan, sec, csc, cot<br />
+                                                arcsin, sinh, arcsinh, etc.<br />
+                                            </td>
+                                            <td dir="auto">
+                                                sin(4x+y)<br />
+                                                arccsch(4x+y)
+                                            </td>
+                                            <td dir="auto"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Scientific notation</th>
+                                            <td dir="auto">10^ and the exponent</td>
+                                            <td dir="auto">10^-9</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">e notation</th>
+                                            <td dir="auto">1e and the exponent</td>
+                                            <td dir="auto">1e-9</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <input type="submit" id="calculator_button" value="=" aria-label="Calculate">
+                <label for="calculator_output" class="calc-output-label sr">Result</label>
+                <input type="text" id="calculator_output" tabindex="-1" readonly />
+            </div>
+        </form>
+    </div>
+</div>
+
+</nav>
+
+
+<div id="accessibile-confirm-modal" class="modal" aria-hidden="true">
+  <div class="inner-wrapper" role="dialog" aria-labelledby="accessibile-confirm-title">
+    <button class="close-modal">
+      <span class="icon fa fa-remove" aria-hidden="true"></span>
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <header>
+      <h2 id="accessibile-confirm-title">
+          Confirm
+        <span class="sr">,
+          modal open
+        </span>
+      </h2>
+    </header>
+    <div role="alertdialog" class="status message" tabindex="-1">
+        <p class="message-title"></p>
+    </div>
+    <hr aria-hidden="true" />
+    <div class="actions">
+        <button class="dismiss ok-button">OK</button>
+        <button class="dismiss cancel-button" data-dismiss="leanModal">Cancel</button>
+    </div>
+  </div>
+  <a href="#accessibile-confirm-modal" rel="leanModal" id="confirm_open_button" style="display:none">open</a>
+</div>
+
+<script type="text/javascript">
+var accessible_confirm = function(message, callback) {
+    $("#accessibile-confirm-modal .cancel-button").click(function(){
+        $("#accessibile-confirm-modal .close-modal").click();
+    });
+    $("#accessibile-confirm-modal .ok-button").click(function(){
+        $("#accessibile-confirm-modal .close-modal").click();
+        callback();
+    });
+
+    accessible_modal("#accessibile-confirm-modal #confirm_open_button", "#accessibile-confirm-modal .close-modal", "#accessibile-confirm-modal", ".content-wrapper");
+    $("#accessibile-confirm-modal #confirm_open_button").click();
+    $("#accessibile-confirm-modal .message-title").html(message);
+};
+</script>
+
+
+      
+    </div>
+
+        
+
+
+
+
+
+
+
+
+<div class="wrapper wrapper-footer">
+  <footer id="footer-openedx" class="grid-container"
+  >
+    <div class="colophon">
+      <nav class="nav-colophon" aria-label="About">
+        <ol>
+            <li class="nav-colophon-01">
+              <a id="about" href="/about">About</a>
+            </li>
+            <li class="nav-colophon-02">
+              <a id="blog" href="/blog">Blog</a>
+            </li>
+            <li class="nav-colophon-03">
+              <a id="help-center" href="https://support.edx.org">Help Center</a>
+            </li>
+            <li class="nav-colophon-04">
+              <a id="contact" href="/contact">Contact</a>
+            </li>
+            <li class="nav-colophon-05">
+              <a id="donate" href="/donate">Donate</a>
+            </li>
+        </ol>
+      </nav>
+
+      <div class="wrapper-logo">
+        <p>
+          <a href="/">
+            <img alt="organization logo" src="https://d3vz9i37d3bazy.cloudfront.net/static/edge/static/images/logo-footer.fde85fe42f6b.png">
+          </a>
+        </p>
+      </div>
+
+      <p class="copyright">© edX.  All rights reserved except where noted.  EdX, Open edX and the edX and Open EdX logos are registered trademarks or trademarks of edX Inc.</p>
+
+      <nav class="nav-legal" aria-label="Legal">
+        <ul>
+            <li class="nav-legal-01">
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li class="nav-legal-02">
+              <a href="/tos">Terms of Service</a>
+            </li>
+            <li class="nav-legal-03">
+              <a href="/honor">Honor Code</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-about-openedx">
+      <p>
+        <a href="http://open.edx.org">
+          <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" alt="Powered by Open edX" width="140" />
+        </a>
+      </p>
+    </div>
+  </footer>
+</div>
+
+
+
+  </div>
+
+  
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/common/js/vendor/jquery.scrollTo.525edcc52fe8.js"></script>
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/vendor/flot/jquery.flot.d3d45ff0c6a8.js"></script>
+
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/vendor/codemirror-compressed.dd4b74f7c5fe.js"></script>
+
+  
+    <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/lms-courseware.94e582ddac20.js" charset="utf-8"></script>
+
+
+  
+    <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/discussion.6fec851b8135.js" charset="utf-8"></script>
+
+
+
+  
+    
+      <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/courseware/courseware_factory.79c507070080.js?raw"></script>
+    <script type="text/javascript">
+        (function (require) {
+            require(['js/courseware/courseware_factory'], function (CoursewareFactory) {
+                
+    CoursewareFactory();
+  
+            });
+        }).call(this, require || RequireJS.require);
+    </script>
+
+
+  
+
+
+
+
+
+<script type="text/javascript">
+    // Fast Preview was introduced in 2.5. However, it
+    // causes undesirable flashing/font size changes when
+    // MathJax is used for interactive preview (equation editor).
+    // Setting processSectionDelay to 0 (see below) fully eliminates
+    // fast preview, but to reduce confusion, we are also setting
+    // the option as displayed in the context menu to false.
+    // When upgrading to 2.6, check if this variable name changed.
+    window.MathJax = {
+      menuSettings: {CHTMLpreview: false}
+    };
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ["\\(","\\)"],
+        ['[mathjaxinline]','[/mathjaxinline]']
+      ],
+      displayMath: [
+        ["\\[","\\]"],
+        ['[mathjax]','[/mathjax]']
+      ]
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+
+  // In order to eliminate all flashing during interactive
+  // preview, it is necessary to set processSectionDelay to 0
+  // (remove delay between input and output phases). This
+  // effectively disables fast preview, regardless of
+  // the fast preview setting as shown in the context menu.
+  MathJax.Hub.processSectionDelay = 0;
+
+  MathJax.Hub.signal.Interest(function(message) {
+    if(message[0] === "End Math") {
+        set_mathjax_display_div_settings();
+    }
+  });
+  function set_mathjax_display_div_settings() {
+    $('.MathJax_Display').each(function( index ) {
+      this.setAttribute('tabindex', '0');
+      this.setAttribute('aria-live', 'off');
+      this.removeAttribute('role');
+      this.removeAttribute('aria-readonly');
+    });
+  }
+</script>
+
+
+<!-- This must appear after all mathjax-config blocks, so it is after the imports from the other templates.
+     It can't be run through static.url because MathJax uses crazy url introspection to do lazy loading of
+     MathJax extension libraries -->
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-MML-AM_SVG"></script>
+
+
+
+  <script type="text/javascript">
+    var $$course_id = "course\u002Dv1:MITx+8.01test+2016_fall";
+  </script>
+
+<script src='https://d3vz9i37d3bazy.cloudfront.net/static/xblock/resources/xmodule.vertical_block/public/js/vertical_student_view.43727a907769.js' type='application/javascript'></script>
+
+
+
+  
+
+
+    <!-- begin segment footer -->
+    <script type="text/javascript">
+        $(window).load(function() {
+            analytics.identify(
+                "137368",
+                {
+                    email: "ikinney@purdue.edu",
+                    username: "ikinney14"
+                },
+                {
+                    integrations: {
+                        // Disable MailChimp because we don't want to update the user's email
+                        // and username in MailChimp on every page load. We only need to capture
+                        // this data on registration/activation.
+                        MailChimp: false
+                    }
+                }
+            );
+        });
+    </script>
+    <!-- end segment footer -->
+
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/vendor/noreferrer.aa62a3e70ffa.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://d3vz9i37d3bazy.cloudfront.net/static/js/utils/navigation.17df676f9045.js" charset="utf-8"></script>
+  
+</body>
+</html>
+
+
+
+<!-- Performance beacon for onload times -->
